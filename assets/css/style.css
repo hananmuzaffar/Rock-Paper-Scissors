@@ -33,7 +33,7 @@ body {
   margin-top: 60px;
 }
 
-.reset-btn
+.reset-btn,
 .auto-play-btn {
   background-color: #fff;
   border: none;
