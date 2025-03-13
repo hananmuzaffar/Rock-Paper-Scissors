@@ -34,17 +34,17 @@ function autoPlay() {
 }
 
 
-document.querySelector('.js-rock-btn')
+document.querySelector('.rock-btn')
   .addEventListener('click', () => {
     playGame('rock');
   })
 
-  document.querySelector('.js-paper-btn')
+  document.querySelector('.paper-btn')
     .addEventListener('click', () => {
       playGame('paper');
     })
 
-  document.querySelector('.js-scissors-btn')
+  document.querySelector('.scissors-btn')
     .addEventListener('click', () => {
       playGame('scissors');
     })
