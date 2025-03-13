@@ -21,7 +21,7 @@ let isAutoPlaying = false;
 let intervalId ;
 function autoPlay() {
   if (!isAutoPlaying) {
-    intervalId = setInterval(function() {
+    intervalId = setInterval(() => {
       const playerMove = pickCompMove();
       playGame(playerMove);
     }, 1000);
@@ -32,6 +32,48 @@ function autoPlay() {
     isAutoPlaying = false;
   }
 }
+
+
+document.querySelector('.js-rock-btn')
+  .addEventListener('click', () => {
+    playGame('rock');
+  })
+
+  document.querySelector('.js-paper-btn')
+    .addEventListener('click', () => {
+      playGame('paper');
+    })
+
+  document.querySelector('.js-scissors-btn')
+    .addEventListener('click', () => {
+      playGame('scissors');
+    })
+
+  document.querySelector('.reset-btn')
+    .addEventListener('click', () => {
+      score.wins= 0;
+      score.losses= 0;
+      score.ties= 0;
+      localStorage.removeItem('score');
+      updateScoreElement();
+    });
+
+  document.querySelector('.auto-play-btn')
+  .addEventListener('click', () => {
+    autoPlay();
+  });
+
+  document.body.addEventListener('keydown', (event) => {
+    if (event.key === 'r') {
+      playGame('rock');
+    }
+    else if (event.key === 'p') {
+      playGame('paper');
+    }
+    else if (event.key === 's') {
+      playGame('scissors');
+    }
+  });
 
 function playGame(playerMove) {
 const compMove = pickCompMove();
@@ -91,8 +133,7 @@ document.querySelector('.js-result')
 
 document.querySelector('.js-moves')
   .innerHTML = `You
-  <img src="assets/images/${playerMove}-emoji.png" alt="" class="move-icon">
-  <img src="assets/images/${compMove}-emoji.png" alt="" class="move-icon"> Computer`;
+  <img src="assets/images/${playerMove}-emoji.png" alt="" class="move-icon"> | Computer <img src="assets/images/${compMove}-emoji.png" alt="" class="move-icon">`;
 
 }
 
