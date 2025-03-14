@@ -34,10 +34,28 @@ body {
 }
 
 .reset-btn,
-.auto-play-btn {
+.auto-play-btn,
+.reset-confirm-btn {
   background-color: #fff;
   border: none;
   padding: 8px 15px;
   font-size: 15px;
   cursor: pointer;
+}
+
+.reset-confirm-btn {
+  margin-left: 10px;
+}
+
+div {
+  margin-top: 50px;
+}
+
+.controls h3 {
+  text-decoration: underline;
+}
+
+.shortcut {
+  font-weight: bold;
+  font-style: italic;
 }

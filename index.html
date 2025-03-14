@@ -9,30 +9,45 @@
 </head>
 <body>
   <p class="title">Rock Paper Scissors</p>
+  
+  <div>
+    <button class="move-btn rock-btn">
+      <img src="assets/images/rock-emoji.png" alt="" class="move-icon">
+    </button>
 
-  <button class="move-btn rock-btn">
-    <img src="assets/images/rock-emoji.png" alt="" class="move-icon">
-  </button>
+    <button class="move-btn paper-btn">
+      <img src="assets/images/paper-emoji.png" alt="" class="move-icon">
+    </button>
 
-  <button class="move-btn paper-btn">
-    <img src="assets/images/paper-emoji.png" alt="" class="move-icon">
-  </button>
+    <button class="move-btn scissors-btn">
+      <img src="assets/images/scissors-emoji.png" alt="" class="move-icon">
+    </button>
 
-  <button class="move-btn scissors-btn">
-    <img src="assets/images/scissors-emoji.png" alt="" class="move-icon">
-  </button>
+    <p class="js-result"></p>
+    <p class="js-moves"></p>
+    <p class="js-score"></p>
 
-  <p class="js-result"></p>
-  <p class="js-moves"></p>
-  <p class="js-score"></p>
+    <button class="reset-btn">
+      Reset Score
+    </button>
 
-  <button class="reset-btn">
-    Reset Score
-  </button>
+    <button class="auto-play-btn">
+      Auto Play
+    </button>
 
-  <button class="auto-play-btn">
-    Auto Play
-  </button>
+    <p class="reset-confirmation-msg"></p>
+  </div>
+
+  <div class="controls">
+    <h3>Keyboard Shortcuts</h3>
+    <ul>
+      <li>Press <span class="shortcut">r</span> or <span class="shortcut">R</span> to select Rock</li>
+      <li>Press <span class="shortcut">p</span> or <span class="shortcut">P</span> to select Paper</li>
+      <li>Press <span class="shortcut">s</span> or <span class="shortcut">S</span> to select Scissors</li>
+      <li>Press <span class="shortcut">a</span> or <span class="shortcut">A</span> to start/stop Autoplaying</li>
+      <li>Press <span class="shortcut">Backspace</span>  to reset score</li>
+    </ul>
+  </div>
 
   <script src="assets/js/script.js"></script>
 </body>

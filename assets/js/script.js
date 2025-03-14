@@ -19,6 +19,7 @@ score = {
 
 let isAutoPlaying = false;
 let intervalId ;
+autoPlayElement = document.querySelector('.auto-play-btn');
 function autoPlay() {
   if (!isAutoPlaying) {
     intervalId = setInterval(() => {
@@ -26,10 +27,12 @@ function autoPlay() {
       playGame(playerMove);
     }, 1000);
     isAutoPlaying = true;
+    autoPlayElement.innerHTML = 'Stop Playing';
   }
   else {
     clearInterval(intervalId);
     isAutoPlaying = false;
+    autoPlayElement.innerHTML = 'Auto Play';
   }
 }
 
@@ -51,11 +54,7 @@ document.querySelector('.rock-btn')
 
   document.querySelector('.reset-btn')
     .addEventListener('click', () => {
-      score.wins= 0;
-      score.losses= 0;
-      score.ties= 0;
-      localStorage.removeItem('score');
-      updateScoreElement();
+      showResetConfirmation();
     });
 
   document.querySelector('.auto-play-btn')
@@ -64,14 +63,20 @@ document.querySelector('.rock-btn')
   });
 
   document.body.addEventListener('keydown', (event) => {
-    if (event.key === 'r') {
+    if (event.key === 'r' || event.key === 'R') {
       playGame('rock');
     }
-    else if (event.key === 'p') {
+    else if (event.key === 'p' || event.key === 'P') {
       playGame('paper');
     }
-    else if (event.key === 's') {
+    else if (event.key === 's' || event.key === 'S') {
       playGame('scissors');
+    }
+    else if (event.key === 'a' || event.key === 'A') {
+      autoPlay();
+    }
+    else if (event.key === 'Backspace') {
+      showResetConfirmation();
     }
   });
 
@@ -155,4 +160,39 @@ else if (randomMove >= 2/3 && randomMove < 1) {
 compMove = 'scissors';
 }
 return compMove;
+}
+
+
+function resetScore() {
+  score.wins= 0;
+  score.losses= 0;
+  score.ties= 0;
+  localStorage.removeItem('score');
+  updateScoreElement();
+}
+
+function showResetConfirmation() {
+  document.querySelector('.reset-confirmation-msg')
+    .innerHTML = `
+    Are you sure you want to reset the score?
+    <button class="reset-confirm-btn reset-yes">
+      Yes</button>
+    <button class="reset-confirm-btn reset-no">
+      No</button>
+    `;
+
+  document.querySelector('.reset-yes')
+    .addEventListener('click', () => {
+      resetScore();
+      hideResetConfirmation();
+    });
+
+    document.querySelector('.reset-no')
+      .addEventListener('click', () => {
+        hideResetConfirmation();
+      });
+}
+
+function hideResetConfirmation() {
+  document.querySelector('.reset-confirmation-msg').innerHTML = '';
 }
